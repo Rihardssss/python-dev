@@ -10,20 +10,14 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Copy dev to server
-        run: cp /Users/rihardsindars/python-dev/app.py /Users/rihardsindars/python-server/app.py
-
-      - name: Show server file
+      - name: Show server before
         run: cat /Users/rihardsindars/python-server/app.py
 
-      - name: Commit server repo
-        run: |
-          cd /Users/rihardsindars/python-server
-          git config user.name "Rihards Indārs"
-          git config user.email "rihards@example.com"
-          git add app.py
-          git commit -m "update from dev" || echo "no changes to commit"
-          git push
+      - name: Copy dev to local server
+        run: cp /Users/rihardsindars/python-dev/app.py /Users/rihardsindars/python-server/app.py
+
+      - name: Show server after
+        run: cat /Users/rihardsindars/python-server/app.py
 
       - name: Run server app
         run: python3 /Users/rihardsindars/python-server/app.py
