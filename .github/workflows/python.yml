@@ -1,0 +1,27 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Copy dev to server
+        run: cp /Users/rihardsindars/python-dev/app.py /Users/rihardsindars/python-server/app.py
+
+      - name: Show server file
+        run: cat /Users/rihardsindars/python-server/app.py
+
+      - name: Commit server repo
+        run: |
+          cd /Users/rihardsindars/python-server
+          git add app.py
+          git commit -m "update from dev" || echo "no changes"
+          git push
+
+      - name: Run server app
+        run: python3 /Users/rihardsindars/python-server/app.py
