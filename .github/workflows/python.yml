@@ -19,8 +19,10 @@ jobs:
       - name: Commit server repo
         run: |
           cd /Users/rihardsindars/python-server
+          git config user.name "Rihards Indārs"
+          git config user.email "rihards@example.com"
           git add app.py
-          git commit -m "update from dev" || echo "no changes"
+          git commit -m "update from dev" || echo "no changes to commit"
           git push
 
       - name: Run server app
