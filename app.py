@@ -1,1 +1,1 @@
-print("DEPLOY SUCCESS")
+print("HELLO WORLD")
