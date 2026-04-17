@@ -1,1 +1,1 @@
-print("FINAL DEMO WORKS")
+print("DEPLOY SUCCESS")
